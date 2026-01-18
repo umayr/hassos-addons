@@ -29,7 +29,7 @@ options:
   prometheus_scrape_interval: 15s
   servername_tag: "HomeAssistant"
   enable_loki: false
-  loki_endpoint: http://loki:3100/api/v1/push
+  loki_endpoint: http://loki:3100/loki/api/v1/push
   enable_loki_syslog: false
   override_config: false
   override_config_path: "/config/alloy/example.alloy"
