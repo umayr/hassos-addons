@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.11] - 2026-01-18
+
+- Bump the Grafana Alloy version from 1.8.3 to [1.12.2](https://github.com/grafana/alloy/releases/tag/v1.12.2)
+
 ## [0.0.10] - 2026-01-18
 
 - Fix a bug with cluster node name not being set properly
