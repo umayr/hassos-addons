@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.10] - 2026-01-18
+
+- Fix a bug with cluster node name not being set properly
+
 ## [0.0.9] - 2026-01-18
 
 - Added translations for better UX

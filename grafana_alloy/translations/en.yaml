@@ -39,7 +39,7 @@ configuration:
   enable_clustering:
     name: "Enable Clustering"
     description: "Enables Grafana Alloy clustering mode to share workload and state."
-  cluster_name:
+  cluster_nodename:
     name: "Cluster Node Name"
     description: "A unique, human-readable name for this node within the cluster (defaults to hostname if empty)."
   cluster_addresses:
