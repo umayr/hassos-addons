@@ -1,6 +1,10 @@
 # Changelog
 
-## [0.0.8] - 2025-05-14
+## [0.0.9] - 2026-01-18
+
+- Added translations for better UX
+
+## [0.0.8] - 2026-01-18
 
 - Added an option to enable clustering via `enable_clustering` and `cluster_addresses` options
 

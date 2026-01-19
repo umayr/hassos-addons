@@ -36,3 +36,15 @@ configuration:
   enable_loki_syslog:
     name: Enable Loki Syslog
     description: Listen for syslog messages over UDP or TCP connections and forwards them to loki
+  enable_clustering:
+    name: "Enable Clustering"
+    description: "Enables Grafana Alloy clustering mode to share workload and state."
+  cluster_name:
+    name: "Cluster Node Name"
+    description: "A unique, human-readable name for this node within the cluster (defaults to hostname if empty)."
+  cluster_addresses:
+    name: "Cluster Join Addresses"
+    description: "A comma-separated list of existing cluster members to join (e.g., 192.168.1.50:12346,192.168.1.51:12346)."
+  cluster_advertise_address:
+    name: "Cluster Advertise Address"
+    description: "The IP address this node should broadcast to other members. Essential when running in Docker/HA environments."
