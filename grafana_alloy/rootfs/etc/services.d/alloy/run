@@ -6,13 +6,39 @@
 
 OVERRIDE_CONFIG=$(bashio::config 'override_config_path')
 
+CLUSTER_ADDRESSES=$(bashio::config 'cluster_addresses')
+CLUSTER_ADVERTISE_ADDRESS=$(bashio::config 'cluster_advertise_address')
+CLUSTER_NODE_NAME=$(bashio::config 'cluster_nodename')
+ADDITIONAL_ARGS=
+
+
 if bashio::config.false 'override_config'; then
     CONFIG_FILE=/etc/alloy/config.alloy
 else
     CONFIG_FILE=$OVERRIDE_CONFIG
 fi
+
+if bashio::config.true 'enable_clustering'; then
+    bashio::log.info "Clustering enabled."
+    ADDITIONAL_ARGS="--cluster.enabled=true"
+
+    if bashio::config.has_value 'cluster_addresses'; then
+        ADDITIONAL_ARGS="${ADDITIONAL_ARGS} --cluster.join-addresses=${CLUSTER_ADDRESSES}"
+    fi
+
+    if bashio::config.has_value 'cluster_advertise_address'; then
+        bashio::log.info "Setting cluster advertise address to: ${CLUSTER_ADVERTISE_ADDRESS}"
+        ADDITIONAL_ARGS="${ADDITIONAL_ARGS} --cluster.advertise-address=${CLUSTER_ADVERTISE_ADDRESS}"
+    fi
+
+    if bashio::config.has_value 'cluster_nodename'; then
+        bashio::log.info "Setting cluster node name to: ${CLUSTER_NODE_NAME}"
+        ADDITIONAL_ARGS="${ADDITIONAL_ARGS} --cluster.node-name=${CLUSTER_NODE_NAME}"
+    fi
+fi
+
 bashio::log.info "Starting Grafana Alloy with ${CONFIG_FILE}"
 bashio::log.info "$(cat ${CONFIG_FILE})"
 
 # Run Alloy
-exec /usr/local/bin/alloy run --server.http.listen-addr=0.0.0.0:12345 --disable-reporting --storage.path=/data $CONFIG_FILE
+exec /usr/local/bin/alloy run --server.http.listen-addr=0.0.0.0:12345 --disable-reporting --storage.path=/data $ADDITIONAL_ARGS $CONFIG_FILE

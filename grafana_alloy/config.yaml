@@ -1,7 +1,7 @@
 ---
 name: "Grafana Alloy"
 description: "Grafana Alloy"
-version: "0.0.7"
+version: "0.0.8"
 slug: "grafana_alloy"
 arch:
   - aarch64
@@ -33,6 +33,10 @@ options:
   enable_loki_syslog: false
   override_config: false
   override_config_path: "/config/alloy/example.alloy"
+  enable_clustering: false
+  cluster_nodename: "home-assistant"
+  cluster_addresses: ""
+  cluster_advertise_address: ""
 schema:
   enable_prometheus: bool
   prometheus_write_endpoint: str?
@@ -46,3 +50,7 @@ schema:
   enable_loki_syslog: bool
   override_config: bool
   override_config_path: str?
+  enable_clustering: bool
+  cluster_name: str?
+  cluster_addresses: str?
+  cluster_advertise_address: str?

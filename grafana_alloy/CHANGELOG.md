@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.8] - 2025-05-14
+
+- Added an option to enable clustering via `enable_clustering` and `cluster_addresses` options
+
 ## [0.0.7] - 2025-05-14
 
 - Bugfix - Won't start if the `enable_loki_syslog` not enabled
